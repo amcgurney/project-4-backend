@@ -1,18 +1,9 @@
-
 // DEPENDENCIES
-
-// get .env variables
 require("dotenv").config();
-// pull PORT from .env, give default value of 3000
-// pull MONGODB_URL from .env
 const { PORT = 3000, MONGODB_URL } = process.env;
-// import express
 const express = require("express");
-// create application object
 const app = express();
-// import mongoose
 const mongoose = require("mongoose");
-// import middleware
 const cors = require("cors");
 const morgan = require("morgan");
 
@@ -30,31 +21,22 @@ mongoose.connection
   .on("close", () => console.log("Your are disconnected from mongoose"))
   .on("error", (error) => console.log(error));
 
-// MODELS
 
-const UserSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    username: String,
-    password: String,
-  });
-
-const User = mongoose.model("User", UserSchema);
 
 // MiddleWare
 
-app.use(cors()); // to prevent cors errors, open access to all origins
-app.use(morgan("dev")); // logging
-app.use(express.json()); // parse json bodies
+app.use(cors()); 
+app.use(morgan("dev")); 
+app.use(express.json()); 
 
 
 
 
 // ROUTES
 
-// create a test route
+// test route
 app.get("/", (req, res) => {
-  res.send("Musician's Friend");
+  res.send("Musician's Friend, Zone");
 });
 
 // USER INDEX ROUTE
