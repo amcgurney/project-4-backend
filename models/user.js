@@ -12,8 +12,9 @@ const UserSchema = new Schema({
     bio: {
         type: String,
     },
-    username: {
+    email: {
         type: String,
+        required: true
     },
     password: {
         type: String,

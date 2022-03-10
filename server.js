@@ -1,11 +1,12 @@
 // DEPENDENCIES
 require("dotenv").config();
-const { PORT = 3000, MONGODB_URL } = process.env;
+const { PORT = 4000, MONGODB_URL } = process.env;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
+const controllers = require("./controllers");
 
 
 // DATABASE CONNECTIONS
@@ -28,7 +29,8 @@ mongoose.connection
 app.use(cors()); 
 app.use(morgan("dev")); 
 app.use(express.json()); 
-
+app.use('/post', controllers.post);
+app.use('/user', controllers.user);
 
 
 
