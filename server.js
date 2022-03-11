@@ -7,7 +7,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 const controllers = require("./controllers");
-
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
 
 // DATABASE CONNECTIONS
 
@@ -26,7 +28,7 @@ mongoose.connection
 
 // MiddleWare
 
-app.use(cors()); 
+app.use(cors(corsOptions)); 
 app.use(morgan("dev")); 
 app.use(express.json()); 
 app.use('/post', controllers.post);
@@ -37,55 +39,55 @@ app.use('/user', controllers.user);
 // ROUTES
 
 // test route
-app.get("/", (req, res) => {
-  res.send("Musician's Friend, Zone");
-});
+// app.get("/", (req, res) => {
+//   res.send("Musician's Friend, Zone");
+// });
 
-// USER INDEX ROUTE
-app.get("/user", async (req, res) => {
-    try {
-      // send all users
-        res.json(await User.find({}));
-    } catch (error) {
-      //send error
-        res.status(400).json(error);
-    }
-});
+// // USER INDEX ROUTE
+// app.get("/user", async (req, res) => {
+//     try {
+//       // send all users
+//         res.json(await User.find({}));
+//     } catch (error) {
+//       //send error
+//         res.status(400).json(error);
+//     }
+// });
 
-  // USER CREATE ROUTE
-app.post("/user", async (req, res) => {
-    try {
-      // send all users
-        res.json(await User.create(req.body));
-    } catch (error) {
-      //send error
-        res.status(400).json(error);
-    }
-});
+//   // USER CREATE ROUTE
+// app.post("/user", async (req, res) => {
+//     try {
+//       // send all users
+//         res.json(await User.create(req.body));
+//     } catch (error) {
+//       //send error
+//         res.status(400).json(error);
+//     }
+// });
 
-// USER UPDATE ROUTE
-app.put("/user/:id", async (req, res) => {
-    try {
-      // send all users
-      res.json(
-        await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
-      );
-    } catch (error) {
-      //send error
-      res.status(400).json(error);
-    }
-  });
+// // USER UPDATE ROUTE
+// app.put("/user/:id", async (req, res) => {
+//     try {
+//       // send all users
+//       res.json(
+//         await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+//       );
+//     } catch (error) {
+//       //send error
+//       res.status(400).json(error);
+//     }
+//   });
   
-  // USER DELETE ROUTE
-  app.delete("/user/:id", async (req, res) => {
-    try {
-      // send all users
-      res.json(await People.findByIdAndRemove(req.params.id));
-    } catch (error) {
-      //send error
-      res.status(400).json(error);
-    }
-  });
+//   // USER DELETE ROUTE
+//   app.delete("/user/:id", async (req, res) => {
+//     try {
+//       // send all users
+//       res.json(await People.findByIdAndRemove(req.params.id));
+//     } catch (error) {
+//       //send error
+//       res.status(400).json(error);
+//     }
+//   });
 
 
 // LISTENER
