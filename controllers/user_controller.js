@@ -6,10 +6,8 @@ const User = require("../models/user");
 
 router.get("/", async (req, res) => {
     try {
-
         res.json(await User.find({}));
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
@@ -17,9 +15,7 @@ router.get("/", async (req, res) => {
 // USER CREATE ROUTE
 router.post('/register', async (req, res) => {
     try {
-  
       let { name, email, password } = req.body;
-  
       if (!email || !password ) {
         return res.status(400).json(
           { 
@@ -37,11 +33,9 @@ router.post('/register', async (req, res) => {
       );
     }
     const newUser = new User({
-
         name,
         email, 
         password,
-  
       });
   
       const savedUser = await newUser.save();
@@ -59,22 +53,18 @@ router.post('/register', async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     try {
-
         res.json(
             await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
         );
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
 
 router.delete("/:id", async (req, res) => {
     try {
-
         res.json(await User.findByIdAndRemove(req.params.id));
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
