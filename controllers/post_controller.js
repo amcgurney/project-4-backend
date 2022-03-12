@@ -4,10 +4,8 @@ const Post = require("../models/post");
 
 router.get("/", async (req, res) => {
     try {
-
-        res.json(await Post.find({}));
+       res.json(await Post.find({}));
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
@@ -26,22 +24,18 @@ router.post("/", async (req, res) => {
 })
 router.put("/:id", async (req, res) => {
     try {
-
-        res.json(
+       res.json(
             await Post.findByIdAndUpdate(req.params.id, req.body, { new: true })
         );
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
 
 router.delete("/:id", async (req, res) => {
     try {
-
         res.json(await Post.findByIdAndRemove(req.params.id));
     } catch (error) {
-
         res.status(400).json(error);
     }
 });
