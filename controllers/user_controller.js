@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const { User } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
       try {
         // send all users
           res.json(await User.create(req.body));

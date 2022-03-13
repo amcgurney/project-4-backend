@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
-const controllers = require("./controllers");
+const controllers = require("./controllers/");
 var corsOptions = {
   origin: "http://localhost:3000"
 };
