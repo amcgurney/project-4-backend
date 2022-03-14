@@ -10,6 +10,15 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+        console.log(req.params.id)
+        res.json(await User.findById(req.params.id));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
+
 router.post("/", async (req, res) => {
       try {
         // send all users
