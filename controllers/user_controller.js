@@ -9,6 +9,15 @@ router.get("/", async (req, res) => {
         res.status(400).json(error);
     }
 });
+router.post("/", async (req, res) => {
+      try {
+        // send all users
+          res.json(await User.create(req.body));
+      } catch (error) {
+        //send error
+          res.status(400).json(error);
+      }
+  });
 
 router.get("/:id", async (req, res) => {
     try {
@@ -19,15 +28,6 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
-      try {
-        // send all users
-          res.json(await User.create(req.body));
-      } catch (error) {
-        //send error
-          res.status(400).json(error);
-      }
-  });
 
 router.put("/:id", async (req, res) => {
     try {
