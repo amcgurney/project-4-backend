@@ -34,6 +34,9 @@ app.use(express.json());
 app.use('/post', controllers.post);
 app.use('/user', controllers.user);
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 // LISTENER
 
