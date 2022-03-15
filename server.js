@@ -28,7 +28,7 @@ mongoose.connection
 
 // MiddleWare
 
-app.use(cors(corsOptions)); 
+app.use(cors()); 
 app.use(morgan("dev")); 
 app.use(express.json()); 
 app.use('/post', controllers.post);
